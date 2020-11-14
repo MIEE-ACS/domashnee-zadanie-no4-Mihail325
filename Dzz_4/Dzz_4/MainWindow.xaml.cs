@@ -38,8 +38,11 @@ namespace Dzz_4
                     {
                         array[i] = Math.Round(-10 + random.NextDouble() * 20, 3);
                     }
-                    var Array = array.Aggregate("", (res, x) => res += $" {x:0.000};").ToString();
-                    tboutputM.Text = Array.Remove(Array.Length - 1);
+                    var Array = array.Aggregate("", (res, x) => res += $"{x:0.000}; ").ToString();
+                    tboutputM.Text = Array.Remove(Array.Length - 2);
+                    tbMin.Text = String.Format("{0:0.000}",array.Min());
+                    tbsum.Text = SumbetweenPlus(array, N);
+                    tbChangeMas.Text = Changearray(array);
                 }
                 else 
                 {
@@ -49,6 +52,9 @@ namespace Dzz_4
                         MessageBoxImage.Error);
                     tbcount.Clear();
                     tboutputM.Clear();
+                    tbChangeMas.Clear();
+                    tbMin.Clear();
+                    tbsum.Clear();
                 }
             }
             else 
@@ -59,24 +65,15 @@ namespace Dzz_4
                         MessageBoxImage.Error);
                     tbcount.Clear();
                 tboutputM.Clear();
+                tbChangeMas.Clear();
+                tbMin.Clear();
+                tbsum.Clear();
             }
             
 
         }
-
-        private void bsearchmin_Click(object sender, RoutedEventArgs e)
-        {
-            double min = array[0];
-            for (int i = 1; i < N; i++) 
-            { 
-            if (min>array[i]) 
-                    min = array[i];
-            }
-            tbMin.Text = String.Format($"{min:0.000}");
-        }
-
-        private void bSum_Click(object sender, RoutedEventArgs e)
-        {
+        static string SumbetweenPlus(double [] array, uint N) 
+        { 
             int indexlastof=0, indexof=0;
             bool f1 = false, f2 = false;
             double sum=0;
@@ -96,21 +93,20 @@ namespace Dzz_4
                 }
             }
             if (f1 == false)
-                tbsum.Text = "В массиве нет положительных чисел";
+                return "В массиве нет положительных чисел";
             else if (f2 == false || N==1)
-                tbsum.Text = "В массиве только одно положительно число";
+                return "В массиве только одно положительно число";
             else if ((indexlastof - indexof) <= 1)
-                tbsum.Text = "Первый и последний положительные элементы стоят рядом.";
+                return "Первый и последний положительные элементы стоят рядом.";
             else
             {
                 for (int i = indexof + 1; i < indexlastof; i++)
                     sum += array[i];
-                tbsum.Text = String.Format($"{sum:0.000}");
+                return  String.Format($"{sum:0.000}");
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        static string Changearray(double [] array)
+        { 
            //array[0] = 0; array[3] = 0; array[4] = 0; array[6] = 0; array[7] = 0; //-для проверки на нули;
             bool f1 = false;
             for (int i = 0; i < array.Length; i++) 
@@ -123,18 +119,16 @@ namespace Dzz_4
             }
             if (f1 == false)
             {
-                tbChangeMas.Text = array.Aggregate("", (res, x) => res += $" {x:0.000};");
-                MessageBox.Show("В данном массиве нет нулей.\nМассив выведен без изменений. ",
-                       "Замечание!",
-                       MessageBoxButton.OK,
-                       MessageBoxImage.Information);
+                var str = array.Aggregate("В данном массиве нет нулей. Массив выведен без изменений.\n", (res, x) => res += $"{x:0.000}; ");
+                return str.Remove(str.Length - 2);
             }
             else
             {
-                var change = array.Where(x => x == 0).Concat(array.Where(x => x != 0)).ToArray();
-                tbChangeMas.Text = change.Aggregate("", (res, x) => res += $" {x:0.000};");
+                var str = array.Where(x => x == 0).Concat(array.Where(x => x != 0)).ToArray().Aggregate("", (res, x) => res += $"{x:0.000}; ").ToString();
+                return str.Remove(str.Length - 2);
             }
         }
+
     }
 }
 

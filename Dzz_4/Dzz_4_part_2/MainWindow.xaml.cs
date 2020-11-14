@@ -138,26 +138,77 @@ namespace Dzz_4_part_2
                         str1 += "\n";
                     }
                     tbMatrix.Text = str1.ToString();
+                    tbOutputSum.Text = SumLinesMatrix(lines, columns, matrix);
+                    tbOutputPoint.Text = Seatpoint(lines, columns, matrix);
                 }
                 else if (rbHand.IsChecked == true)
                 {
                     spEveryput.IsEnabled = true;
                     tbMatrix.Clear();
-                     f3 = false;
-                     t = 0; k = 0;
-                     str2 = "";
+                    f3 = false;
+                    t = 0; k = 0;
+                    str2 = "";
                     tbEverWelc.Text = $"Введите A(1,1) элемент:";
                 }
-                else
+                else if (rbAutoYes.IsChecked == true) 
                 {
-                    MessageBox.Show("Необходимо выбрать как заполнять матрицу.",
-                    "Внимание!",
-                     MessageBoxButton.OK,
-                     MessageBoxImage.Information);
+                    string str1 = "";
+                    for (int i = 0; i < lines; i++)
+                    {
+                        for (int j = 0; j < columns; j++)
+                        {
+                            matrix[i, j] = rand.Next(-100, 100);
+                            str1 += ($"{matrix[i, j],5}").PadLeft(5) + "\t";
+                        }
+                        str1 += "\n";
+                    }
+                    tbMatrix.Text = str1.ToString();
+                    string str;
+                    GenerateM(lines, columns, matrix, out str);
+                    tbMatrix.Text = str;
+                    tbOutputSum.Text = SumLinesMatrix(lines, columns, matrix);
+                    tbOutputPoint.Text = Seatpoint(lines, columns, matrix);
                 }
             }
         }
-        private void bSum_Click(object sender, RoutedEventArgs e)
+
+        static void GenerateM(uint lines, uint columns, int[,] matrix, out string str) 
+        {
+            str = "";
+            int i, j;
+            Random ran = new Random();
+            if (lines > 1 && columns > 1)
+            {
+                    i = ran.Next(0, (int)lines);
+                    j = ran.Next(0, (int)columns);
+                    matrix[i,j] = ran.Next(-90, 90);
+                    for (int l = 0; l < columns; l++)
+                    {
+                    if (matrix[i, j] >= matrix[i, l] && l != j)
+                        matrix[i, l] = ran.Next(matrix[i, j]+5,100);
+                    }
+                    for (int m = 0; m < lines; m++)
+                    {
+                        if (matrix[i, j] <= matrix[m, j] && m != i)
+                        matrix[m, j]=ran.Next(-100,matrix[i, j]-5);
+                    }           
+                for (int t = 0; t < lines; t++)
+                {
+                    for (int k = 0; k < columns; k++)
+                    {
+                        str += ($"{matrix[t, k],5}").PadLeft(5) + "\t";
+                    }
+                    str += "\n";
+                }
+                str.ToString();
+            }
+            else 
+            {
+                str = "Создание матрицы с седловыми точками невозможно.\n Количествол столбцов должно быть больше 1";
+            }  
+        }
+
+        static string SumLinesMatrix(uint lines, uint columns,int [,] matrix)
         {
             int sum = 0;
             string str = "";
@@ -178,9 +229,9 @@ namespace Dzz_4_part_2
                 }
             }
             if (str == "")
-                tbOutputSum.Text = "В матрице нет отрицательных элементов";
+                return "В матрице нет отрицательных элементов";
             else
-                tbOutputSum.Text = str;
+                return str;
         }
 
         private void bput_Click(object sender, RoutedEventArgs e)
@@ -240,13 +291,14 @@ namespace Dzz_4_part_2
                     "Поздравляем!",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
+                tbOutputSum.Text = SumLinesMatrix(lines, columns, matrix);
+                tbOutputPoint.Text = Seatpoint(lines, columns, matrix);
             }
         }
 
         //функцию рассчитывал из того что если в строке(столбце) два одинаковых элемента,
         //то это уже не минимум(не максимум) соответсвенно 
-        private void bPoint_Click(object sender, RoutedEventArgs e)
-        {
+       static string Seatpoint(uint lines, uint columns, int[,] matrix) { 
            saddle sed=new saddle();
             bool f4 = true, f5=true;
             string conclus = "";
@@ -288,9 +340,9 @@ namespace Dzz_4_part_2
                 conclus += $"Номер строки:{sed.x + 1}; Номер столбца:{sed.y + 1};\n";
             }
             if (conclus == "")
-                tbOutputPoint.Text = "В данной матрице нет седловых точек";
+               return "В данной матрице нет седловых точек";
             else
-            tbOutputPoint.Text = conclus;
+            return conclus;
         }
 
         public class EqualNull : SystemException

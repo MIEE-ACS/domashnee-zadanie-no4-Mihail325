@@ -5,20 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Dzz_4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="450" FontFamily="Times New Roman" FontSize="16">
+        Title="Домашняя работа №4 УТС-21 Молчанов Михаил" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="450" FontFamily="Times New Roman" FontSize="16">
     <Grid MinWidth="800" MinHeight="430">
         <Label Content="Исходный массив:" HorizontalAlignment="Left" Margin="6,62,0,0" VerticalAlignment="Top" Width="167" Height="28" FontSize="16" FontFamily="Times New Roman"/>
         <TextBox x:Name="tboutputM" Margin="10,92,144,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="70" FontSize="16" FontFamily="Times New Roman" IsReadOnly="True" IsReadOnlyCaretVisible="True" OpacityMask="Black" SelectionBrush="Black" SelectionTextBrush="Black" CaretBrush="Black" BorderBrush="Black" Foreground="Black" HorizontalScrollBarVisibility="Visible"/>
         <Button x:Name="bCreat" Content="Создать" HorizontalAlignment="Left" Margin="471,33,0,0" VerticalAlignment="Top" Height="25" Width="111" Click="bCreat_Click"/>
         <Label Content="Минимальный элемент в массиве:  " Margin="6,174,539,0" VerticalAlignment="Top" Height="28"/>
         <TextBox x:Name="tbMin" HorizontalAlignment="Left" Margin="266,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Height="25" OpacityMask="Black" SelectionTextBrush="Black" SelectionBrush="Black" CaretBrush="Black" BorderBrush="Black" Foreground="Black" IsReadOnly="True" IsReadOnlyCaretVisible="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-        <Button x:Name="bsearchmin" Content="Найти мин." HorizontalAlignment="Left" Margin="440,174,0,0" VerticalAlignment="Top" Height="25" Width="105" Click="bsearchmin_Click" />
         <Label Content="Cумма элементов массива, расположенных между первым и последним положительными элементами:" HorizontalAlignment="Left" Margin="6,215,0,0" VerticalAlignment="Top" Width="714" Height="28" Padding="5,5,5,5"/>
         <TextBox x:Name="tbsum" HorizontalAlignment="Left" Margin="10,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" OpacityMask="Black" SelectionTextBrush="Black" SelectionBrush="Black" Foreground="Black" CaretBrush="Black" BorderBrush="Black" IsReadOnly="True" IsReadOnlyCaretVisible="True" Height="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button x:Name="bSum" Content="Сумма" HorizontalAlignment="Left" Margin="320,248,0,0" VerticalAlignment="Top" Height="25" Width="109" Click="bSum_Click"/>
         <Label Content="Преобразованный массив, в начале все нули:" HorizontalAlignment="Left" Margin="6,294,0,0" VerticalAlignment="Top" Height="28" Width="323"/>
         <TextBox x:Name="tbChangeMas" Margin="10,327,144,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="Black" Height="70" IsReadOnly="True"/>
-        <Button Content="Изменить" Margin="0,327,10,0" VerticalAlignment="Top" Height="25" HorizontalAlignment="Right" Width="111" Click="Button_Click"/>
         <Label Content="Введите количество элементов в массиве:" HorizontalAlignment="Left" Margin="6,30,0,0" VerticalAlignment="Top" Height="28"/>
         <TextBox x:Name="tbcount" HorizontalAlignment="Left" Margin="320,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="25" BorderBrush="Black"/>
 

@@ -14,21 +14,20 @@
         <TextBox x:Name="tbCountColumns" Margin="457,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White" BorderBrush="Black" HorizontalAlignment="Left" Width="120" IsManipulationEnabled="True"/>
         <Button x:Name="tbCreat" Content="Создать матрицу" Margin="818,43,0,0" VerticalAlignment="Top" Height="28" HorizontalAlignment="Left" Width="147" Click="tbCreat_Click"/>
         <Label Content="Сумма элементов в тех строках, которые содержат хотя бы &#xD;&#xA;один отрицательный элемент." HorizontalAlignment="Left" Margin="509,153,0,0" VerticalAlignment="Top" Width="460" Height="50" AllowDrop="False" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Padding="0,5,5,5"/>
-        <TextBox x:Name="tbOutputSum" HorizontalAlignment="Left" Margin="509,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" Height="70" VerticalScrollBarVisibility="Visible" IsReadOnly="True" BorderBrush="Black" IsManipulationEnabled="True"/>
-        <Button x:Name="bSum" Content="Найти" HorizontalAlignment="Left" Margin="876,208,0,0" VerticalAlignment="Top" Height="70" Width="93" Click="bSum_Click"/>
+        <TextBox x:Name="tbOutputSum" HorizontalAlignment="Left" Margin="509,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="453" Height="70" VerticalScrollBarVisibility="Visible" IsReadOnly="True" BorderBrush="Black" IsManipulationEnabled="True"/>
         <Label Content="Номера строк и столбцов всех седловых точек матрицы." HorizontalAlignment="Left" Margin="509,295,0,0" VerticalAlignment="Top" Width="414" Height="28" Padding="0,5,5,5"/>
-        <TextBox x:Name="tbOutputPoint" HorizontalAlignment="Left" Margin="509,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="350" Height="70" BorderBrush="Black" IsReadOnly="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden"/>
-        <Button x:Name="bPoint" Content="Найти" HorizontalAlignment="Left" Margin="876,335,0,0" VerticalAlignment="Top" Height="70" Width="93" Click="bPoint_Click"/>
+        <TextBox x:Name="tbOutputPoint" HorizontalAlignment="Left" Margin="509,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="453" Height="70" BorderBrush="Black" IsReadOnly="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden"/>
         <StackPanel x:Name="spEveryput" Margin="509,105,0,0" Height="28" Width="453" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" AllowDrop="True" IsEnabled="False">
             <TextBox x:Name="tbEverWelc" TextWrapping="Wrap" Width="172" IsReadOnly="True" VerticalContentAlignment="Center" BorderBrush="White" />
             <TextBox x:Name="tbEveryputelem" TextWrapping="Wrap" Width="149" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="Black" Margin="4,0,0,0"/>
             <Button x:Name="bput" Content="Ввести" Width="124" Margin="4,0,0,0" Click="bput_Click"/>
         </StackPanel>
         <TextBox x:Name="tbMatrix" HorizontalAlignment="Left" Margin="10,102,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="472" Height="445" BorderBrush="#FF020215" IsReadOnly="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"/>
-        <GroupBox Header="Как заполнять матрицу:" Margin="590,18,0,0" BorderBrush="Black" Height="66" VerticalAlignment="Top" HorizontalAlignment="Left" Width="215">
+        <GroupBox Header="Как заполнять матрицу:" Margin="590,16,0,0" BorderBrush="Black" Height="82" VerticalAlignment="Top" HorizontalAlignment="Left" Width="215">
             <StackPanel Height="56">
-                <RadioButton x:Name="rbAuto" Content="Автоматически"/>
-                <RadioButton x:Name="rbHand" Content="Вручную" Height="19" Width="203"/>
+                <RadioButton x:Name="rbAuto" Content="Автоматически" IsChecked="True"/>
+                <RadioButton x:Name="rbHand" Height="19" Width="203" Content="Вручную"/>
+                <RadioButton x:Name="rbAutoYes" Content="Готовая матрица"/>
             </StackPanel>
         </GroupBox>
 
